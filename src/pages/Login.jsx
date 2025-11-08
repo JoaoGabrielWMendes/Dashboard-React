@@ -5,6 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 
 export function Login() {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log(event.elements.email.value);
+        console.log(event.elements.password.value)
+    }
     return (
         <>
             
@@ -18,10 +24,10 @@ export function Login() {
             <Container>
             <Card border="secondary">
                 <Card.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" name="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
@@ -29,7 +35,7 @@ export function Login() {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Senha</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Enviar
