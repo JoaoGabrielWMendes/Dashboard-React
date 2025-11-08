@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 //se começou com use é hook
 
 export function Dashboard(){
+    const { doLogout } = useAuth();
     const { isLogged } = useAuth();
     const navigate = useNavigate();
     
@@ -18,6 +19,7 @@ export function Dashboard(){
         <div>
             <h1>Dashboard</h1>
             <p>Bem-vindo ao dashboard</p>
+            <p>Clique aqui para fazer <a href="" onClick={doLogout}>logout</a></p>
         </div>
     </>);
 }

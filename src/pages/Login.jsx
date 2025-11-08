@@ -4,12 +4,23 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router";
+
 export function Login() {
+    const { doLogin } = useAuth();
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        console.log(event.elements.email.value);
-        console.log(event.elements.password.value)
+        const email = event.target.elements.email.value;
+        const password = (event.target.elements.password.value);
+
+        if(email&&password){
+            doLogin();
+            navigate("/dashboard")
+        }
     }
     return (
         <>
